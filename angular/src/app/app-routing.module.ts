@@ -12,16 +12,15 @@ import {PangolainDetailComponent} from './component/pangolain-detail/pangolain-d
 import {PangolainEsapaceComponent} from './component/pangolain-affiche-detail/pangolain-esapace.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'profile/liste', component:PangolainListeComponent},
-  { path: 'profile/create', component:PangolainCreateComponent},
-  { path: 'profile/update/:id', component:PangolainUpdateComponent},
-  { path: 'profile/detail/:id', component:PangolainDetailComponent},
-  { path: 'profile/affiche_detail/:id', component:PangolainEsapaceComponent},
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: 'profile/liste', component: PangolainListeComponent},
+  { path: 'profile/create', component: PangolainCreateComponent},
+  { path: 'profile/update/:id', component: PangolainUpdateComponent},
+  { path: 'profile/detail/:id', component: PangolainDetailComponent},
+  { path: 'profile/affiche_detail/:id', component: PangolainEsapaceComponent},
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -12,13 +12,13 @@
         <a href="/register" class="nav-link" routerLink="register">Inscription</a>
       </li>
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Connexion</a>
+        <a href="/login" class="nav-link active" routerLink="login">Connexion</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
-        <a href="#" class="nav-link active">{{ username }}</a>
+        <a href="/profile" routerLink="profile" class="nav-link active">{{ username }}</a>
       </li>
       <li class="nav-item">
         <a href class="nav-link" (click)="logout()">Deconnexion</a>
