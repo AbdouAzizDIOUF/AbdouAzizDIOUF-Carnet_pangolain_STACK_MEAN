@@ -1,0 +1,40 @@
+<div class="container" *ngIf="currentUser; else loggedOut">
+  <header class="jumbotron">
+    <h3 style="text-align: center">
+      <strong>{{ currentUser.username }}&nbsp;&nbsp;&nbsp; {{currentUser.email}}  </strong>
+    </h3>
+  </header>
+
+  <div class="container">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="email">Email: </label>
+          <input type="text" class="form-control" id="email" disabled name="email" value="{{pangolain.email}}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="age">Age</label>
+          <input type="number" class="form-control" id="age" disabled name="age" value="{{pangolain.age}}">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="race">Race</label>
+          <input type="text" class="form-control" id="race" disabled name="race" value="{{pangolain.race}}">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="famille">Famille</label>
+          <input type="text" class="form-control" id="famille"  disabled name="famille" value="{{pangolain.famille}}">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nourriture">Nourriture</label>
+          <input type="text" class="form-control" id="nourriture" disabled name="nourriture" value="{{pangolain.nourriture}}">
+        </div>
+      </div>
+  </div>
+
+</div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
+

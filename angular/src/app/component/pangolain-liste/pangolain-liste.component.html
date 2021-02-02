@@ -1,0 +1,78 @@
+<div class="container" *ngIf="currentUser; else loggedOut">
+  <header class="jumbotron">
+    <h3 style="text-align: center">
+      <strong>{{ currentUser.username }}&nbsp;&nbsp;&nbsp; {{currentUser.email}}  </strong>
+    </h3>
+  </header>
+
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-4"></div>
+      <div class="border">
+        <a class="btn btn-md btn-outline-primary" [routerLink]="['/profile/create']"><i class="fa fa-user"></i> New Employer</a></div>
+    </div>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+        <th scope="col">Age</th>
+        <th scope="col">Race</th>
+        <th scope="col">Famille</th>
+        <th scope="col">Nourriture</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody *ngIf="pangolains">
+      <tr *ngFor="let e of pangolains; let i=index">
+        <th scope="row" *ngIf="i==0">1</th>
+        <th scope="row" *ngIf="i!=0">{{i+1}}</th>
+        <td>{{e.email}}</td>
+        <td>{{e.age}}</td>
+        <td>{{e.race}}</td>
+        <td>{{e.famille}}</td>
+        <td>{{e.nourriture}}</td>
+        <td></td>
+        <td class="text-center edit-block">
+          <span class="edit" [routerLink]="['/profile/affiche_detail', btoa(e._id)]">
+            <button type="button" class="btn btn-info btn-sm"><i class="fa fa-search"></i>Details</button>
+          </span>
+          <span class="edit" [routerLink]="['/profile/update', btoa(e._id)]">
+            <button type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Edit</button>
+          </span>
+          <span class="delete" >  <!--(click)="onRemoveEmployee(e)"-->
+            <button type="button" class="btn btn-danger btn-sm" (click)="openDelete(contentDelete, e)"><i class="fa fa-remove"></i>Delete</button>
+          </span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<ng-template #contentDelete let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Confirm Delete</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h2>Are you sure you want to delete this record.</h2>
+    <div class="border text-center">
+      <button data-dismiss="modal" class="btn btn-danger" (click)="onDeletePangolain()">Supprimer</button>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+  </div>
+</ng-template>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>

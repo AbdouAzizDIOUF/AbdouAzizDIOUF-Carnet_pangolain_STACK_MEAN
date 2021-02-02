@@ -1,0 +1,98 @@
+<div class="container" *ngIf="currentUser; else loggedOut">
+  <header class="jumbotron">
+    <h3 style="text-align: center">
+      <strong>{{ currentUser.username }}&nbsp;&nbsp;&nbsp; {{currentUser.email}}  </strong>
+    </h3>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <button class="btn btn-outline-primary btn-lg btn-block text-center" (click)="onGetInformationDetail()" [ngClass]="activeDerail==true?'active':''">
+          <span><i class="fa fa-user"></i></span>
+          <br>Detail Informations
+        </button>
+      </div>
+      <div class="col-sm-6">
+        <button class="btn btn-outline-primary btn-lg btn-block text-center" [ngClass]="activeDerail==false?'active':''" (click)="onUpdate()">
+          <span><i class="fa fa-users"></i></span>
+          <br>Modifier Informations
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container" style="margin-top: 50px;" *ngIf="activeDerail">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputEmail4">Username</label>
+          <input type="text" class="form-control" id="inputEmail4" disabled value="{{pangolain.username}}">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" disabled value="{{pangolain.email}}">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="age1">Age</label>
+          <input type="text" class="form-control" id="age1" disabled value="{{pangolain.age}}">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="famille1">Famille</label>
+          <input type="text" class="form-control" id="famille1" disabled value="{{pangolain.famille}}">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="race1">Race</label>
+          <input type="text" class="form-control" id="race1" disabled value="{{pangolain.race}}">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="nourriture1">Nourriture</label>
+          <input type="text" class="form-control" id="nourriture1" disabled value="{{pangolain.nourriture}}">
+        </div>
+      </div>
+  </div>
+
+  <div class="container" style="margin-top: 50px;" *ngIf="activeDerail==false">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmitted()">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="age">Age</label>
+          <input type="text" class="form-control" id="age" [(ngModel)]="pangolain.age" formControlName="age" name="age" [ngClass]="{'is-invalid':submitted && f.age.errors}">
+          <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+            <div *ngIf="f.age.errors.required">Age is required</div>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="race">Race</label>
+          <input type="text" class="form-control" id="race" [(ngModel)]="pangolain.race" formControlName="race" name="race" [ngClass]="{'is-invalid':submitted && f.race.errors}">
+          <div *ngIf="submitted && f.race.errors" class="invalid-feedback">
+            <div *ngIf="f.race.errors.required">Race is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="famille">Famille</label>
+          <input type="text" class="form-control" id="famille" [(ngModel)]="pangolain.famille" formControlName="famille" name="famille" [ngClass]="{'is-invalid':submitted && f.famille.errors}">
+          <div *ngIf="submitted && f.famille.errors" class="invalid-feedback">
+            <div *ngIf="f.famille.errors.required">Famille is required</div>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nourriture">Nourriture</label>
+          <input type="text" class="form-control" id="nourriture" [(ngModel)]="pangolain.nourriture" formControlName="nourriture" name="nourriture" [ngClass]="{'is-invalid':submitted && f.nourriture.errors}">
+          <div *ngIf="submitted && f.nourriture.errors" class="invalid-feedback">
+            <div *ngIf="f.nourriture.errors.required">Nourriture is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
