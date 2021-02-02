@@ -24,8 +24,8 @@ export class PangolainCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-      this.registerForm = FormGroup;
-      this.valideForm();
+    this.registerForm = FormGroup;
+    this.valideForm();
   }
 
 
@@ -36,6 +36,9 @@ export class PangolainCreateComponent implements OnInit {
     }
     if (this.registerForm.valid){
       this.submitted = false;
+      this.pangolain.amie = this.currentUser.id;
+      console.log(this.pangolain.amie);
+      console.log(this.pangolain);
       this.pangolainService.onCreatePangolain(this.pangolain).subscribe(data => {
         return this.router.navigate(['/profile/liste']);
       }, error =>{
@@ -54,6 +57,8 @@ export class PangolainCreateComponent implements OnInit {
       race: ['', Validators.required],
       famille: ['', Validators.required],
       nourriture: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
     });
   }

@@ -13,6 +13,7 @@ exports.signup = (req, res) => {
     age: null,
     famille: null,
     race: null,
+    amie: null,
     nourriture : null,
     password: bcrypt.hashSync(req.body.password, 8)
   });

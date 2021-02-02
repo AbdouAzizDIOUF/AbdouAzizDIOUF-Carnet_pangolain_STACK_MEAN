@@ -12,7 +12,7 @@
       <div class="col-sm-3"></div>
       <div class="col-sm-4"></div>
       <div class="border">
-        <a class="btn btn-md btn-outline-primary" [routerLink]="['/profile/create']"><i class="fa fa-user"></i> New Employer</a></div>
+        <a class="btn btn-md btn-outline-primary" [routerLink]="['/profile/create']"><i class="fa fa-user"></i> New Pangolain </a></div>
     </div>
     <table class="table">
       <thead class="thead-dark">
@@ -29,22 +29,22 @@
       </thead>
       <tbody *ngIf="pangolains">
       <tr *ngFor="let e of pangolains; let i=index">
-        <th scope="row" *ngIf="i==0">1</th>
-        <th scope="row" *ngIf="i!=0">{{i+1}}</th>
-        <td>{{e.email}}</td>
-        <td>{{e.age}}</td>
-        <td>{{e.race}}</td>
-        <td>{{e.famille}}</td>
-        <td>{{e.nourriture}}</td>
+        <th scope="row" *ngIf="i==0 && currentUser.id != e._id" >1</th>
+        <th scope="row" *ngIf="i!=0 && currentUser.id != e._id">{{i+1}}</th>
+        <td *ngIf="currentUser.id != e._id">{{e.email}}</td>
+        <td *ngIf="currentUser.id != e._id">{{e.age}}</td>
+        <td *ngIf="currentUser.id != e._id">{{e.race}}</td>
+        <td *ngIf="currentUser.id != e._id">{{e.famille}}</td>
+        <td *ngIf="currentUser.id != e._id">{{e.nourriture}}</td>
         <td></td>
-        <td class="text-center edit-block">
+        <td class="text-center edit-block" *ngIf="currentUser.id != e._id">
           <span class="edit" [routerLink]="['/profile/affiche_detail', btoa(e._id)]">
             <button type="button" class="btn btn-info btn-sm"><i class="fa fa-search"></i>Details</button>
           </span>
-          <span class="edit" [routerLink]="['/profile/update', btoa(e._id)]">
+          <span class="edit" [routerLink]="['/profile/update', btoa(e._id)]" *ngIf="currentUser.id != e._id">
             <button type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Edit</button>
           </span>
-          <span class="delete" >  <!--(click)="onRemoveEmployee(e)"-->
+          <span class="delete" *ngIf="currentUser.id != e._id">  <!--(click)="onRemoveEmployee(e)"-->
             <button type="button" class="btn btn-danger btn-sm" (click)="openDelete(contentDelete, e)"><i class="fa fa-remove"></i>Delete</button>
           </span>
         </td>

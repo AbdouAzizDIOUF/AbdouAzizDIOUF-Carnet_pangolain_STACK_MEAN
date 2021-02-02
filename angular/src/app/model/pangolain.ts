@@ -6,6 +6,7 @@ export class Pangolain {
   age!: number;
   famille!: string;
   race!: string;
+  amie!: string;
   nourriture!: string;
   roles:any;
 }

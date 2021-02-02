@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class GlobalService {
 
-  private urlbase = "http://localhost:8080/api/";
+  private urlbase = "http://localhost:8090/api/";
   public headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor() { }

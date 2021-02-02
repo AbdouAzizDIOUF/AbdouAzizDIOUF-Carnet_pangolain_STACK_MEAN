@@ -29,6 +29,7 @@ export class PangolainListeComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
+    console.log(this.currentUser.id)
     this.getListePangolains();
   }
 
@@ -38,7 +39,7 @@ export class PangolainListeComponent implements OnInit {
   }
 
   getListePangolains() {
-    this.pangolainService.onGetAllPangolains().subscribe(data => {
+    this.pangolainService.onGetPangolainsByFriends(this.currentUser.id).subscribe(data => {
       console.log(data)
       this.pangolains = data;
     }, error =>{

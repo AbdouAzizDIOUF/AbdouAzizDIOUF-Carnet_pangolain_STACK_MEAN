@@ -32,21 +32,37 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-3">
           <label for="famille">Famille</label>
           <input type="text" class="form-control" id="famille" [(ngModel)]="pangolain.famille" formControlName="famille" name="famille" [ngClass]="{'is-invalid':submitted && f.famille.errors}">
           <div *ngIf="submitted && f.famille.errors" class="invalid-feedback">
             <div *ngIf="f.famille.errors.required">Famille is required</div>
           </div>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-3">
           <label for="nourriture">Nourriture</label>
           <input type="text" class="form-control" id="nourriture" [(ngModel)]="pangolain.nourriture" formControlName="nourriture" name="nourriture" [ngClass]="{'is-invalid':submitted && f.nourriture.errors}">
           <div *ngIf="submitted && f.nourriture.errors" class="invalid-feedback">
             <div *ngIf="f.nourriture.errors.required">Nourriture is required</div>
           </div>
         </div>
+        <div class="form-group col-md-3">
+          <label for="username">Username: </label>
+          <input type="text" class="form-control" id="username" [(ngModel)]="pangolain.username" formControlName="username" name="username" [ngClass]="{'is-invalid':submitted && f.username.errors}">
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Nourriture is required</div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-3">
+          <label for="password">Password: </label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="pangolain.password" formControlName="password" name="password" [ngClass]="{'is-invalid':submitted && f.password.errors}">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
       </div>
+     <!-- <input type="hidden" [(ngModel)]="pangolain.amie" name="amie" formControlName="amie" value="currentUser.id">-->
       <div class="form-group">
         <button class="btn btn-success btn-lg btn-block" type="submit">New Pangolain</button>
       </div>

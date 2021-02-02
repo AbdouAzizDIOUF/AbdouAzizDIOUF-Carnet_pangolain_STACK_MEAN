@@ -11,11 +11,14 @@ export class UserService {
   constructor(private http: HttpClient, private globalService:GlobalService) { }
 
   public getPublicContent(): Observable<any> {
-    return this.http.get("http://localhost:8080/api/test/" + 'all', { responseType: 'text' });
+    return this.http.get("http://localhost:8090/api/test/" + 'all', { responseType: 'text' });
   }
 
   public onGetAllPangolains(){
     return this.http.get(this.globalService.getUrlBasePangoalin());
+  }
+  public onGetPangolainsByFriends(p:any){
+    return this.http.get(this.globalService.getUrlBasePangoalin()+"amie/"+p);
   }
 
   public onGetPangolainById(p:any){

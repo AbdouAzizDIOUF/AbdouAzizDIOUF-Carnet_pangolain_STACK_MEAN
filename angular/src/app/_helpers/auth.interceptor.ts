@@ -5,8 +5,8 @@ import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http'
 import { TokenStorageService } from '../_services/token-storage.service';
 import { Observable } from 'rxjs';
 
-const TOKEN_HEADER_KEY = 'Authorization';       // for Spring Boot back-end
-// const TOKEN_HEADER_KEY = 'x-access-token';   // for Node.js Express back-end
+//const TOKEN_HEADER_KEY = 'Authorization';       // for S
+const TOKEN_HEADER_KEY = 'x-access-token';   // for N
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -16,11 +16,11 @@ export class AuthInterceptor implements HttpInterceptor {
     let authReq = req;
     const token = this.token.getToken();
     if (token != null) {
-      // for Spring Boot back-end
-      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
+      // for S
+      //authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
 
-      // for Node.js Express back-end
-      // authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
+      // for N
+      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
     }
     return next.handle(authReq);
   }
